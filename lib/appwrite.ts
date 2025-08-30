@@ -63,18 +63,37 @@ export async function logout() {
 }
 
 export async function getUser() {
-    try {
-        const response = await account.get();
-        if (response.$id) {
-            const userAvatar = avatar.getInitials(response.name);
+  try {
+    const me = await account.get();
+    if (!me?.$id) return null;
 
-            return {
-                ...response,
-                avatar: userAvatar.toString(),
-            };
-        }
-    } catch (error) {
-        console.error(error);
-        return null;
-    }
+    const displayName = me.name?.trim() || me.email?.split('@')[0] || 'User';
+    const avatarDataUrl = await getInitialsDataUrl(displayName, 128, 128);
+
+    return {
+      ...me,
+      avatar: avatarDataUrl,
+    };
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+}
+
+function arrayBufferToBase64(buffer: ArrayBuffer) {
+  let binary = '';
+  const bytes = new Uint8Array(buffer);
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) {
+    const sub = bytes.subarray(i, i + chunk);
+    binary += String.fromCharCode.apply(null, sub as unknown as number[]);
+  }
+  return btoa(binary);
+}
+
+export async function getInitialsDataUrl(name: string, width = 128, height = 128) {
+  const safe = name?.trim() || 'User';
+  const buf = await avatar.getInitials({ name: safe, width, height });
+  const base64 = arrayBufferToBase64(buf);
+  return `data:image/png;base64,${base64}`;
 }
