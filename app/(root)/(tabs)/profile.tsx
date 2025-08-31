@@ -100,7 +100,7 @@ const Profile = () => {
                         />
                     ))}
                 </View>
-                <View>
+                <View className="flex flex-col border-t mt-5 pt-5 border-primary-200">
                     <SettingItems
                         icon={icons.logout}
                         title="Logout"
