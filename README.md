@@ -1,50 +1,79 @@
-# Welcome to your Expo app 👋
+# 🏡 Real Estate Mobile App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Discover, explore and manage properties seamlessly across iOS and Android.  
+This mobile app is built with **React Native (Expo)** and powered by **Appwrite** for authentication, data and file storage.
 
-## Get started
+---
 
-1. Install dependencies
+## ✨ Features
 
-   ```bash
-   npm install
-   ```
+- 🔑 **Google OAuth2 Authentication** via Appwrite
+- 👤 **User Context & Global State** with React Context API
+- 🏠 **Property Listings**
+    - Browse latest properties
+    - Search by name, address, or type
+    - Filter by category (Apartment, House, etc.)
+- ⭐ **Reviews & Ratings** per property
+- 🧑‍💼 **Agent Profiles** linked to properties
+- 🖼 **Property Galleries** with images
+- ☁️ **Appwrite Backend**
+    - Database (properties, agents, reviews, galleries)
+    - Storage bucket for images
+    - Avatars API for initials
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛠 Tech Stack
 
-In the output, you'll find options to open the app in a
+- [React Native](https://reactnative.dev/) (Expo)
+- [Expo Router](https://expo.github.io/router/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Appwrite](https://appwrite.io/) (Auth, Database, Storage, Avatars)
+- [NativeWind](https://www.nativewind.dev/) (Tailwind CSS for RN)
+- [use-debounce](https://www.npmjs.com/package/use-debounce) for optimized search
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🚀 Getting Started
 
-## Get a fresh project
+### Prerequisites
 
-When you're ready, run:
+- Node.js >= 18
+- npm or yarn
+- Expo CLI (`npm install -g expo-cli`)
+- Appwrite instance (self-hosted or [Cloud](https://cloud.appwrite.io))
 
-```bash
-npm run reset-project
-```
+### Installation
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+1. Clone the repo:
 
-## Learn more
+    ```bash
+    git clone https://github.com/<your-username>/real-estate-app.git
+    cd real-estate-app
 
-To learn more about developing your project with Expo, look at the following resources:
+    ```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+2. Install dependencies
 
-## Join the community
+    ```bash
+    npm install
 
-Join our community of developers creating universal apps.
+    ```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+3. Run the project
+    ```bash
+    run
+    ```
+
+### Screenshots
+
+<p float="left">
+  <img src="assets/images/screenSignIn.png" width="200" />
+  <img src="assets/images/screenHomePage.png" width="200" />
+  <img src="assets/images/screenExplorePage.png" width="200" />
+</p>
+
+<p float="left">
+  <img src="assets/images/screenPropertyDetailsPage.png" width="200" />
+  <img src="assets/images/screenSettingsPage.png" width="200" />
+</p>
