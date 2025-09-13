@@ -169,3 +169,34 @@ export async function getProperties({
         return [];
     }
 }
+
+export async function getPropertyById({ id }: { id: string }) {
+    try {
+        const property = await databases.getDocument(
+            config.databaseId!,
+            config.propertiesColumnId!,
+            id
+        );
+
+        const reviews = await databases.listDocuments(
+            config.databaseId!,
+            config.reviewsColumnId!,
+            [Query.equal('property', id), Query.orderDesc('$createdAt')]
+        );
+
+        const agent = await databases.getDocument(
+            config.databaseId!,
+            config.agentsColumnId!,
+            property?.agent
+        );
+
+        return {
+            ...property,
+            reviews: reviews.documents,
+            agent: agent,
+        };
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
